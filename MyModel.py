@@ -38,7 +38,9 @@ class MyModel(object):
         self.model = None
 
     def load(self):
+        print("curl from %s" % self.url)
         urllib.request.urlretrieve(self.url, "model.m")
+        print("start loading model")
         self.model = torch.load('model.m', map_location=torch.device('cpu'))
         print("model loaded")
     def predict(self, X, features_names=None):

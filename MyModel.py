@@ -36,7 +36,6 @@ class MyModel(object):
         self.url = url
         self.loaded = False
         self.model = None
-        self.load()
 
     def load(self):
         print("start download")

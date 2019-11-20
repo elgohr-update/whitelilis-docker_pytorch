@@ -10,6 +10,9 @@ spec:
         containers:
         - name: classifier
           image: whitelilis/pytorch:3.0
+          env:
+          - name: SELDON_LOG_LEVEL
+            value: DEBUG
     graph:
       children: []
       endpoint:

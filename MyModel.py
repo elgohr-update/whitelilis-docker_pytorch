@@ -36,7 +36,7 @@ class MyModel(object):
         self.url = url
         self.loaded = False
         self.model = None
-        self.load()
+        #self.load()
 
     def load(self):
         print("start download")
@@ -58,16 +58,17 @@ class MyModel(object):
             x1, x2 = self.trans(X)
             t0 = torch.tensor(x1)
             t1 = torch.tensor(x2)
-            return torch.sigmoid(self.model(t0, t1)).data.item()
+            return [torch.sigmoid(self.model(t0, t1)).data.item()]
         else:
             return "less is more more more more %d" % self.fix
 
 
-    def trans(self, aim58):
+    def trans(self, aim):
+        aim58 = aim[0]
         t1 = aim58[0:8]
-        xi = np.array([[ [t1[0]], [t1[1]], [t1[2]], [t1[3]], [t1[4]], [t1[5]], [t1[6]], [t1[7]] ]]) 
+        xi = np.array([[ [t1[0]], [t1[1]], [t1[2]], [t1[3]], [t1[4]], [t1[5]], [t1[6]], [t1[7]] ]], dtype='long') 
         t2_head = [1, 1, 1, 1, 1, 1, 1, 1 ]
-        xv = np.array([ t2_head + aim58[8:] ], dtype='float32')
+        xv = np.array([ t2_head + list(aim58[8:]) ], dtype='float32')
         return (xi, xv)
 
 

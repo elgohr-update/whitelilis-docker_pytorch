@@ -36,9 +36,11 @@ class MyModel(object):
         self.url = url
         self.loaded = False
         self.model = None
+        self.load()
 
     def load(self):
-        print("curl from %s" % self.url)
+        print("start download")
+        print(self.url)
         urllib.request.urlretrieve(self.url, "model.m")
         print("start loading model")
         self.model = torch.load('model.m', map_location=torch.device('cpu'))

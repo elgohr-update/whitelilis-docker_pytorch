@@ -41,7 +41,7 @@ class MyModel(object):
     def load(self):
         print("start download")
         print(self.url)
-        #urllib.request.urlretrieve(self.url, "model.m")
+        urllib.request.urlretrieve(self.url, "model.m")
         print("start loading model")
         self.model = torch.load('model.m', map_location=torch.device('cpu'))
         print("model loaded")

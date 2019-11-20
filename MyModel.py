@@ -36,6 +36,7 @@ class MyModel(object):
         self.url = url
         self.loaded = False
         self.model = None
+        self.load()
 
     def load(self):
         print("start download")
@@ -53,9 +54,6 @@ class MyModel(object):
         X : array-like
         feature_names : array of feature names (optional)
         """
-        if not self.loaded:
-            self.load()
-
         if self.model:
             t0 = torch.tensor(X[0])
             t1 = torch.tensor(X[1])
